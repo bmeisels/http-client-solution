@@ -71,7 +71,7 @@ fn get(url: impl AsRef<str>) -> anyhow::Result<()> {
     };
 
     match response.status() {
-        400 => {
+        200..=299 => {
             let mut buf: [u8; 4096];
             let mut string = String::new();
             let reader = response.reader();
