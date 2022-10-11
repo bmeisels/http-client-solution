@@ -1,0 +1,28 @@
+[package]
+name = "http-client-solution"
+version = "0.1.0"
+authors = ["Benny Meisels <benny.meisels@gmail.com>"]
+edition = "2021"
+resolver = "2"
+
+[profile.release]
+opt-level = "s"
+
+[profile.dev]
+debug = true    # Symbols are nice and they don't increase the size on Flash
+opt-level = "z"
+
+[features]
+pio = ["esp-idf-sys/pio"]
+
+[dependencies]
+esp-idf-sys = { version = "0.31.5", features = ["binstart"] }
+esp-idf-svc = "0.42.1"
+esp32-c3-dkc02-bsc = { path = "esp32-c3-dkc02-bsc" }
+embedded-svc = "=0.22"
+anyhow = "1.0"
+toml-cfg = "0.1"
+
+[build-dependencies]
+embuild = "0.30"
+anyhow = "1"
